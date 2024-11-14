@@ -1,0 +1,40 @@
+<odoo>
+    <record id="view_document_management_form" model="ir.ui.view">
+        <field name="name">document.management.form</field>
+        <field name="model">document.management</field>
+        <field name="arch" type="xml">
+            <form string="Document Management">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="company_id"/>
+                        <field name="create_uid" readonly="1"/>
+                        <field name="employee_ids" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_document_management_tree" model="ir.ui.view">
+        <field name="name">document.management.tree</field>
+        <field name="model">document.management</field>
+        <field name="arch" type="xml">
+            <tree string="Document Management">
+                <field name="name"/>
+                <field name="company_id"/>
+                <field name="create_uid"/>
+            </tree>
+        </field>
+    </record>
+
+    <menuitem id="menu_document_management_root" name="Dokumentų Valdymas" sequence="10"/>
+    <menuitem id="menu_document_management" name="Dokumentai" parent="menu_document_management_root" action="action_document_management"/>
+
+    <record id="action_document_management" model="ir.actions.act_window">
+        <field name="name">Dokumentai</field>
+        <field name="res_model">document.management</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
